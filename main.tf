@@ -1,9 +1,9 @@
-
-resource "aws_instance" "testserver" {
-  ami           = "ami-830c94e3"
-  instance_type = "t2.micro"
+resource "aws_instance" "app_server" {
+  ami           = var.ami_id
+  instance_type = var.instance
+  count         = var.instance_count
 
   tags = {
-    Name = "ExampletestServerInstance"
+    Name = "ExampleAppServerInstance-${count.index + 1}"
   }
 }
